@@ -111,7 +111,8 @@ export default {
   },
   methods: {
     async searchNews() {
-      const category = this.category;
+      const category = this.$route.query.name;
+      console.log(category)
       const keywords = this.keywords;
       const response = await fetch(
         `http://localhost:8001/api/get-news.php?keywords=${keywords}&categories=${category}`,

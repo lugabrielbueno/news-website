@@ -29,27 +29,27 @@
           <RouterLink class="nav-link" to="/">Início</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/Geral">Geral</RouterLink>
+          <RouterLink class="nav-link" to="/general">Geral</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/entretenimento"
+          <RouterLink class="nav-link" to="/entertainment"
             >Entretenimento</RouterLink
           >
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/esportes">Esportes</RouterLink>
+          <RouterLink class="nav-link" to="/sports">Esportes</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/tecnologia">Tecnologia</RouterLink>
+          <RouterLink class="nav-link" to="/technology">Tecnologia</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/ciencia">Ciência</RouterLink>
+          <RouterLink class="nav-link" to="/science">Ciência</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/negocios">Negócios</RouterLink>
+          <RouterLink class="nav-link" to="/business">Negócios</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/saude">Saúde</RouterLink>
+          <RouterLink class="nav-link" to="/health">Saúde</RouterLink>
         </li>
       </ul>
     </div>
