@@ -3,7 +3,7 @@
 session_start();
 
 header("Content-Type: application/json");
-header('Access-Control-Allow-Origin: http://localhost:5174'); // This allows all origins
+header('Access-Control-Allow-Origin: http://localhost:5173'); // This allows all origins
 header('Access-Control-Allow-Credentials: true'); // This allows all origins
 
 
@@ -16,6 +16,7 @@ $queryString = http_build_query([
   'keywords' => $keywords ?? NULL, // the word "wolf" will be
   'categories' => $categories ?? NULL,
   'languages' => 'pt',
+  'limit' => '50',
   'sort' => 'popularity',
 ]);
 

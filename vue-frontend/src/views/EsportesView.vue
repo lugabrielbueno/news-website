@@ -9,9 +9,8 @@ export default {
   },
   methods: {
     async searchNews() {
-      const access_key = "0bf6de60d92291b9d920869970e3d21e";
       const response = await fetch(
-        `https://api.mediastack.com/v1/news?access_key=${access_key}&languages=pt&categories=sports`,
+        `http://localhost:8001/api/get-news.php?keywords=${keywords}&categories=${category}`,
       );
       const datas = await response.json();
       if (datas) {
@@ -21,7 +20,7 @@ export default {
   },
   data() {
     return {
-      news: "HELLLLLLLLLLLLLOOOOOOOOO",
+      news: "",
     };
   },
 };

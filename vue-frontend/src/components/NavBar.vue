@@ -32,7 +32,9 @@
           <RouterLink class="nav-link" to="/Geral">Geral</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/entretenimento">Entretenimento</RouterLink>
+          <RouterLink class="nav-link" to="/entretenimento"
+            >Entretenimento</RouterLink
+          >
         </li>
         <li class="nav-item">
           <RouterLink class="nav-link" to="/esportes">Esportes</RouterLink>
@@ -40,15 +42,15 @@
         <li class="nav-item">
           <RouterLink class="nav-link" to="/tecnologia">Tecnologia</RouterLink>
         </li>
-         <li class="nav-item">
-        <RouterLink class="nav-link" to="/ciencia">Ciência</RouterLink>
-        </li>       
-         <li class="nav-item">
+        <li class="nav-item">
+          <RouterLink class="nav-link" to="/ciencia">Ciência</RouterLink>
+        </li>
+        <li class="nav-item">
           <RouterLink class="nav-link" to="/negocios">Negócios</RouterLink>
-        </li>       
-         <li class="nav-item">
+        </li>
+        <li class="nav-item">
           <RouterLink class="nav-link" to="/saude">Saúde</RouterLink>
-        </li>       
+        </li>
       </ul>
     </div>
   </nav>
@@ -63,20 +65,20 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Jersey+25&family=Markazi+Text:wght@400..700&family=Roboto+Slab:wght@100..900&family=VT323&display=swap");
 nav.navbar {
-  width: 100%;
+  width: 65%;
   background-color: transparent;
-  color: white;
-  font-family: Inter;
+  color: rgb(10, 10, 10);
+  font-family: "Markazi Text", serif;
 }
 i {
-  color: white;
+  color: rgb(10, 10, 10);
 }
 .navbar ul.navbar-nav li.nav-item .nav-link {
-  color: white;
-  margin-left: 50px;
-  font-size: 19px;
+  color: rgb(10, 10, 10);
+  margin-left: 10px;
+  font-size: 22px;
 }
 .navbar ul.navbar-nav li.nav-item .nav-link:hover {
   text-decoration: underline;
