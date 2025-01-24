@@ -8,9 +8,15 @@
       <i class="material-icons">check</i>
       Você receberá noticias toda manhã, obrigado por se inscrever!
     </div>
+    <div class="alert alert-danger" v-if="alertaNoData" role="alert">
+      <i class="material-icons">info</i>
+      Não foi possível encontrar dados com a pesquisa.
+    </div>
   </div>
   <div class="container">
-    <RouterView />
+    <transition name="fade" mode="out-in">
+      <RouterView />
+    </transition>
   </div>
   <div class="footer">
     <FooterPage />
@@ -24,6 +30,7 @@ export default {
   data() {
     return {
       alertaInscrito: "",
+      alertaNoData: "",
     };
   },
   created() {
@@ -31,7 +38,23 @@ export default {
   },
   mounted() {
     this.alertaInscrito = sessionStorage.getItem("subscribed");
+    this.alertaNoData = sessionStorage.getItem("nodata");
     sessionStorage.removeItem("subscribed");
+  },
+  methods: {
+    beforeEnter(el) {
+      el.style.opacity = 0;
+    },
+    enter(el, done) {
+      setTimeout(() => {
+        el.style.opacity = 1;
+        done();
+      }, 500);
+    },
+    leave(el, done) {
+      el.style.opacity = 0;
+      setTimeout(done, 500);
+    },
   },
 
   components: {
@@ -51,6 +74,13 @@ export default {
   align-items: flex-start;
   align-self: flex-start;
 }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.8s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
 .divider {
   color: rgb(30, 30, 30, 0.9);
   display: flex;
@@ -59,6 +89,7 @@ export default {
   align-self: center;
   width: 50%;
   padding: 10px 0px;
+  margin-top: 70px;
 }
 
 .messages {
@@ -79,7 +110,7 @@ export default {
 }
 .messages .alert {
   font-family: "Markazi Text", serif;
-  font-size:20px;
+  font-size: 20px;
   padding: 4px 80px;
 }
 </style>

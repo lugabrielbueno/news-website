@@ -3,21 +3,28 @@
     <div class="me-auto">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <div class="row align-items-center">
-            <div class="col-auto">
-              <input
-                placeholder="Pesquisar"
-                type="text"
-                id="pesquisa_noticia"
-                class="form-control form-control-sm"
-              />
+          <form
+            @submit.prevent="searchNews"
+            action="/"
+            method="get"
+            name="search"
+          >
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <input
+                  placeholder="Pesquisar"
+                  type="text"
+                  id="pesquisa_noticia"
+                  class="form-control form-control-sm"
+                />
+              </div>
+              <div class="col-md-2">
+                <button type="submit" class="btn btn-sm">
+                  <i class="material-icons">search</i>
+                </button>
+              </div>
             </div>
-            <div class="col-md-2">
-              <button type="submit" class="btn btn-sm">
-                <i class="material-icons">search</i>
-              </button>
-            </div>
-          </div>
+          </form>
         </li>
       </ul>
     </div>
@@ -29,7 +36,7 @@
           <RouterLink class="nav-link" to="/">Início</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/general">Geral</RouterLink>
+          <RouterLink class="nav-link" to="/">Geral</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink class="nav-link" to="/entertainment"
@@ -59,7 +66,34 @@
 export default {
   name: "NavBar",
   data() {
-    return {};
+    return {
+      languages: "pt,en,es",
+    };
+  },
+  methods: {
+    async searchNews() {
+      const keywords = document.getElementById("pesquisa_noticia").value;
+      document.getElementById("pesquisa_noticia").value = '';
+      const language = this.languages;
+      const response = await fetch(
+        `http://localhost:8001/api/get-news.php?languages=${language}&keywords=${keywords}`,
+        {
+          method: "GET",
+          credentials: "include",
+        },
+      );
+      const datas = await response.json();
+      if (!datas) {
+        sessionStorage.setItem("nodata", true);
+        location.href = "http://localhost:5173/";
+      } else {
+        var noticias = datas.data.filter((item) => item.image);
+        this.news_slide = noticias.slice(0, 3);
+        this.news = noticias.slice(3, 18);
+        this.news_left = noticias.slice(18, 35);
+        return;
+      }
+    },
   },
 };
 </script>
@@ -67,10 +101,15 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Jersey+25&family=Markazi+Text:wght@400..700&family=Roboto+Slab:wght@100..900&family=VT323&display=swap");
 nav.navbar {
-  width: 65%;
-  background-color: transparent;
+  width: 100%;
+  background-color: rgb(250, 250, 250);
   color: rgb(10, 10, 10);
   font-family: "Markazi Text", serif;
+  position: fixed;
+  overflow: hidden;
+  z-index: 10;
+  padding: 0px 350px;
+  margin-top: -5px;
 }
 i {
   color: rgb(10, 10, 10);

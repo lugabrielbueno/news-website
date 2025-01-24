@@ -57,35 +57,35 @@
       </button>
     </div>
     <div class="container-geral">
-      <h4>Leia também:</h4>
-      <div class="right-news no-images">
+      <div class="left-news no-images">
+        <h4>Leia também:</h4>
         <ul>
           <li
             class="list-notice"
             v-for="(noticia_lista, index) in news"
             :key="index"
           >
-            <a class="link_url" href="{{ noticia_lista.url }}">
+            <a class="link_url" :href="noticia_lista.url">
               {{ noticia_lista.title }}</a
             >
           </li>
         </ul>
       </div>
-      <div class="left-news with-images">
+      <div class="right-news with-images">
         <ul>
           <li
             class="list-notice-img"
-            v-for="(noticia_lista_img, index) in visibleItems"
+            v-for="(noticia_lista_img, index) in news_left"
             :key="index"
           >
-            <a class="link_url" href="{{ noticia_lista_img.url }}">
-              <img
-                width="200px"
-                height="120px"
-                :src="noticia_lista_img.image"
-              />
+            <a class="link_url" :href="noticia_lista_img.url">
+              <img :src="noticia_lista_img.image" />
+              <p class="data_info">
+                Fonte: {{ noticia_lista_img.source }}<br />
+                {{ formatDate(noticia_lista_img.published_at) }}
+              </p>
               <br />
-              {{ noticia_lista_img.title }}
+              <p class="data_info_title">{{ noticia_lista_img.title }}</p>
             </a>
           </li>
         </ul>
@@ -105,17 +105,28 @@ export default {
       news: [],
       news_left: [],
       category: "general",
+      language: "pt",
       keywords: "",
       news_slide: [],
     };
   },
   methods: {
+    formatDate(date) {
+      const options = {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      };
+      return new Intl.DateTimeFormat("en-GB", options).format(new Date(date));
+    },
     async searchNews() {
-      const category = this.$route.query.name;
-      console.log(category)
+      const category = this.$route.name;
       const keywords = this.keywords;
+      const language = this.language;
       const response = await fetch(
-        `http://localhost:8001/api/get-news.php?keywords=${keywords}&categories=${category}`,
+        `http://localhost:8001/api/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
         {
           method: "GET",
           credentials: "include",
@@ -123,23 +134,30 @@ export default {
       );
       const datas = await response.json();
       if (datas) {
-        this.news = datas.data.slice(3, 18);
-        this.news_left = datas.data.slice(18, 30);
-        this.news_slide = datas.data.slice(0, 3);
+        var noticias = datas.data.filter((item) => item.image);
+        this.news_slide = noticias.slice(0, 3);
+        this.news = noticias.slice(3, 18);
+        this.news_left = noticias.slice(18, 35);
       }
     },
   },
-  computed: {
-    visibleItems() {
-      return this.news_left.filter((item) => item.image);
+  watch: {
+    $route: {
+      immediate: false,
+      handler() {
+        this.searchNews();
+      },
     },
   },
 };
 </script>
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Jersey+25&family=Markazi+Text:wght@400..700&family=Roboto+Slab:wght@100..900&family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
 .container-geral {
   font-family: "Markazi Text", serif;
+  display: flex;
 }
 section {
   width: 80%;
@@ -155,32 +173,63 @@ h5 {
   color: rgb(30, 30, 30, 0.9);
 }
 
+p.data_info_title:hover {
+  text-decoration: underline;
+}
+p.data_info_title {
+  line-height: 1.1em;
+  float: left;
+  margin-left: 3px;
+  max-width: 200px;
+  font-family: "Markazi Text", serif;
+  font-size: 18px;
+  width: 100%;
+}
+p.data_info {
+  float: left;
+  margin-left: 3px;
+  max-width: 200px;
+  color: rgba(50, 50, 50, 0.5);
+  font-family: "Roboto Condensed";
+  font-size: 12px;
+}
 .container-geral .left-news {
-  width: 40%;
-  float: right;
+  width: 55%;
+  float: left;
+}
+.right-news ul li {
+  overflow: hidden;
+}
+.right-news ul {
+  height: 100%;
+  overflow: hidden;
 }
 .container-geral .right-news {
-  width: 55%;
+  width: 40%;
   float: left;
 }
 .list-notice-img:hover {
   text-decoration: underline;
 }
-.list-notice-img a {
-  list-style-type: none;
+.list-notice-img a.link_url {
+  display: block;
   text-decoration: none;
   color: rgb(30, 30, 30, 0.9);
   padding: 2px 0;
   font-size: 18px;
+  overflow: hidden;
 }
 .list-notice-img img {
   border-radius: 3px;
+  float: left;
+  width: 200px;
 }
 .list-notice-img {
   list-style-type: none;
   text-decoration: none;
   color: rgb(30, 30, 30, 0.9);
   padding: 5px 0;
+  width: 100%;
 }
 .list-notice .link_url:hover {
   text-decoration: underline;
@@ -188,6 +237,7 @@ h5 {
 .list-notice .link_url {
   color: rgb(30, 30, 30, 0.9);
   text-decoration: none;
+  width: 100%;
 }
 .list-notice {
   list-style-type: none;

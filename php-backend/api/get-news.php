@@ -9,16 +9,23 @@ header('Access-Control-Allow-Credentials: true'); // This allows all origins
 
 $access_key = trim($_SESSION['access_key']);
 $keywords = $_GET['keywords'];
-$categories = $_GET['categories'];
+$categories = $_GET['categories'] ? $_GET['categories'] : 'search';
+$language = $_GET['languages'];
 
-$queryString = http_build_query([
+$request = [
   'access_key' => $access_key,
-  'keywords' => $keywords ?? NULL, // the word "wolf" will be
+  'keywords' => $keywords ?? NULL,
   'categories' => $categories ?? NULL,
-  'languages' => 'pt',
+  'languages' => $language,
   'limit' => '50',
   'sort' => 'popularity',
-]);
+];
+if ($request['categories'] == 'search') {
+  unset($request['categories']);
+}
+
+$queryString = http_build_query($request);
+
 
 if ($_SESSION[$categories]) {
   echo json_encode($_SESSION[$categories]);
