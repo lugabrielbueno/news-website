@@ -8,9 +8,10 @@ header('Access-Control-Allow-Credentials: true'); // This allows all origins
 
 
 $access_key = trim($_SESSION['access_key']);
-$keywords = $_GET['keywords'];
+$keywords = $_GET['keywords'] ??  '';
 $categories = $_GET['categories'] ? $_GET['categories'] : 'search';
-$language = $_GET['languages'];
+$language = $_GET['languages'] ?? '';
+$date_range = date('Y-01-01') . "," . date('Y-12-31');
 
 $request = [
   'access_key' => $access_key,
@@ -18,14 +19,17 @@ $request = [
   'categories' => $categories ?? NULL,
   'languages' => $language,
   'limit' => '50',
+  'date' => $date_range,
   'sort' => 'popularity',
 ];
-if ($request['categories'] == 'search') {
+if ($request['categories'] == 'search' or $request['categories'] == 'world') {
   unset($request['categories']);
 }
 
 $queryString = http_build_query($request);
-
+if (isset($world)) {
+  $_SESSION[$categories];
+}
 
 if ($_SESSION[$categories]) {
   echo json_encode($_SESSION[$categories]);

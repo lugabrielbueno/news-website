@@ -14,6 +14,9 @@
     </div>
   </div>
   <div class="container">
+    <div class='world_news'>
+      <WorldNews />
+    </div>
     <transition name="fade" mode="out-in">
       <RouterView />
     </transition>
@@ -25,6 +28,7 @@
 <script>
 import NavBar from "./components/NavBar.vue";
 import FooterPage from "./components/FooterPage.vue";
+import WorldNews from "./components/WorldNews.vue";
 export default {
   name: "App",
   data() {
@@ -56,16 +60,17 @@ export default {
       setTimeout(done, 500);
     },
   },
-
   components: {
     NavBar,
     FooterPage,
+    WorldNews,
   },
 };
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Jersey+25&family=Markazi+Text:wght@400..700&family=Roboto+Slab:wght@100..900&family=VT323&display=swap");
+
 .header {
   width: 100%;
   max-height: 100px;
@@ -74,13 +79,17 @@ export default {
   align-items: flex-start;
   align-self: flex-start;
 }
-.fade-enter-active, .fade-leave-active {
+
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.8s ease;
 }
 
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
+
 .divider {
   color: rgb(30, 30, 30, 0.9);
   display: flex;
@@ -100,6 +109,7 @@ export default {
   align-items: center;
   align-self: center;
 }
+
 .container {
   width: 100%;
   color: rgb(30, 30, 30, 0.9);
@@ -108,6 +118,7 @@ export default {
   align-items: flex-start;
   align-self: flex-start;
 }
+
 .messages .alert {
   font-family: "Markazi Text", serif;
   font-size: 20px;
