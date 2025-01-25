@@ -1,5 +1,7 @@
 <?php
+
 session_start();
+
 
 
 function loadEnv($file)
@@ -28,11 +30,12 @@ function loadEnv($file)
     }
   }
 }
+var_dump($_SESSION);
 
 try {
-  if (!$_SESSION['access_key']) {
+  if (!$_SESSION['apiKey']) {
     loadEnv('.env');
-    $_SESSION['access_key'] = getenv('ACCESS_KEY') . PHP_EOL;
+    $_SESSION['apiKey'] = getenv('API_KEY') . PHP_EOL;
   }
 } catch (Exception $e) {
   echo $e->getMessage();

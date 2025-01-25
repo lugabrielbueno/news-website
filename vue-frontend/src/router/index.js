@@ -43,6 +43,16 @@ const router = createRouter({
       name: "science",
       component: HomeView,
     },
+    {
+      path: "/programming",
+      name: "programming",
+      component: HomeView,
+    },
+    {
+      path: "/politics",
+      name: "politics",
+      component: HomeView,
+    },
   ],
 });
 

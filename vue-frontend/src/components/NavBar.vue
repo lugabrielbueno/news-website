@@ -44,6 +44,11 @@
           >
         </li>
         <li class="nav-item">
+          <RouterLink class="nav-link" to="/programming"
+            >Programação</RouterLink
+          >
+        </li>
+        <li class="nav-item">
           <RouterLink class="nav-link" to="/sports">Esportes</RouterLink>
         </li>
         <li class="nav-item">
@@ -54,6 +59,9 @@
         </li>
         <li class="nav-item">
           <RouterLink class="nav-link" to="/business">Negócios</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink class="nav-link" to="/politics">Política</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink class="nav-link" to="/health">Saúde</RouterLink>

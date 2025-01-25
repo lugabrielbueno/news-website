@@ -1,13 +1,13 @@
 <template>
   <section>
     <div class="right-news with-images">
+      <h4>No mundo</h4>
       <ul>
         <li class="list-notice-img" v-for="(noticia_lista_img, index) in news" :key="index">
           <a class="link_url" :href="noticia_lista_img.url">
             <img :src="noticia_lista_img.image" />
             <p class="data_info">
-              Fonte: {{ noticia_lista_img.source }}<br />
-              {{ formatDate(noticia_lista_img.published_at) }}
+              {{ formatDate(noticia_lista_img.published) }}
             </p>
             <br />
             <p class="data_info_title">{{ noticia_lista_img.title }}</p>
@@ -26,8 +26,7 @@ export default {
   data() {
     return {
       news: [],
-      category: "world",
-      language: "en,es",
+      language: "en",
     };
   },
   methods: {
@@ -42,18 +41,18 @@ export default {
       return new Intl.DateTimeFormat("en-GB", options).format(new Date(date));
     },
     async searchNewsWorld() {
-      const category = this.category;
       const language = this.language;
       const response = await fetch(
-        `http://localhost:8001/api/get-news.php?languages=${language}&categories=${category}`,
+        `http://localhost:8000/api/get-news.php?languages=${language}`,
         {
-          method: "GET",
-          credentials: "include",
-        },
+          method: 'GET',
+          credentials: 'include'
+
+        }
       );
       const datas = await response.json();
       if (datas) {
-        var noticias = datas.data.filter((item) => item.image);
+        var noticias = datas.news.filter((item) => item.image);
         this.news = noticias.slice(0, 5);
       }
     },
@@ -66,10 +65,11 @@ export default {
 
 section {
   position: absolute;
-  width: 12.5%;
+  width: 11%;
   display: flex;
   justify-content: flex-start;
-  margin-left: -220px;
+  margin-left: -140px;
+  border-right: 1px solid black;
 }
 
 
@@ -82,10 +82,15 @@ p.data_info_title {
   float: left;
   margin-left: 3px;
   max-width: 200px;
-  font-family: "Markazi Text", serif;
   font-size: 17px;
-  width: 100%;
+  width: 90%;
   margin-top: -15px;
+}
+
+h4 {
+  font-family: "Markazi Text", serif;
+  margin-left: 25px;
+  font-size: 28px;
 }
 
 p.data_info {

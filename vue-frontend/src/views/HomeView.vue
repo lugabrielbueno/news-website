@@ -46,8 +46,7 @@
             <a class="link_url" :href="noticia_lista_img.url">
               <img :src="noticia_lista_img.image" />
               <p class="data_info">
-                Fonte: {{ noticia_lista_img.source }}<br />
-                {{ formatDate(noticia_lista_img.published_at) }}
+                {{ formatDate(noticia_lista_img.published) }}
               </p>
               <br />
               <p class="data_info_title">{{ noticia_lista_img.title }}</p>
@@ -91,18 +90,19 @@ export default {
       const keywords = this.keywords;
       const language = this.language;
       const response = await fetch(
-        `http://localhost:8001/api/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
+        `http://localhost:8000/api/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
         {
           method: "GET",
-          credentials: "include",
+          credentials: 'include'
         },
       );
       const datas = await response.json();
+      console.log(datas)
       if (datas) {
-        var noticias = datas.data.filter((item) => item.image);
+        var noticias = datas.news.filter((item) => item.image);
         this.news_slide = noticias.slice(0, 3);
         this.news = noticias.slice(3, 18);
-        this.news_left = noticias.slice(18, 35);
+        this.news_left = noticias.slice(18, 22);
       }
     },
   },
@@ -121,14 +121,21 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 .container-geral {
+  width: 90%;
   font-family: "Markazi Text", serif;
-  display: flex;
   min-height: 100vh;
 }
 
 section {
   width: 85%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  float: left;
+
 }
 
 h4.leia {
@@ -182,6 +189,7 @@ p.data_info {
 
 .container-geral .right-news {
   width: 35%;
+  display: block;
   float: left;
 }
 
@@ -229,14 +237,11 @@ p.data_info {
   padding: 3px 0px;
 }
 
-#carouselExampleCaptions {
-  width: 100%;
-  font-size: 45px;
-}
 
-.slide_image {
-  height: 300px;
+#carouselExampleCaptions .slide_image {
+  height: 250px;
   margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 .carousel-inner {
@@ -254,6 +259,11 @@ div.carousel-indicators {
 
 div.carousel-indicators button.active {
   background-color: rgb(60, 60, 60, 0.9);
+}
+
+#carouselExampleCaptions {
+  width: 60%;
+  float: left;
 }
 
 div.carousel-indicators button {
