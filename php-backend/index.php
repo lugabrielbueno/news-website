@@ -30,7 +30,6 @@ function loadEnv($file)
     }
   }
 }
-var_dump($_SESSION);
 
 try {
   if (!$_SESSION['apiKey']) {

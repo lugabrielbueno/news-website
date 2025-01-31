@@ -4,10 +4,11 @@
       <h4>No mundo</h4>
       <ul>
         <li class="list-notice-img" v-for="(noticia_lista_img, index) in news" :key="index">
-          <a class="link_url" :href="noticia_lista_img.url">
-            <img :src="noticia_lista_img.image" />
+          <a class="link_url" :href="noticia_lista_img.link">
+            <img :src="noticia_lista_img.image_url" />
             <p class="data_info">
-              {{ formatDate(noticia_lista_img.published) }}
+              Fonte: {{ noticia_lista_img.source_name }}<br>
+              {{ formatDate(noticia_lista_img.pubDate) }}
             </p>
             <br />
             <p class="data_info_title">{{ noticia_lista_img.title }}</p>
@@ -27,6 +28,7 @@ export default {
     return {
       news: [],
       language: "en",
+      category: 'top'
     };
   },
   methods: {
@@ -42,8 +44,9 @@ export default {
     },
     async searchNewsWorld() {
       const language = this.language;
+      const category = this.category;
       const response = await fetch(
-        `http://localhost:8000/api/get-news.php?languages=${language}`,
+        `http://localhost:8000/api/get-news.php?languages=${language}&categories=${category}`,
         {
           method: 'GET',
           credentials: 'include'
@@ -52,7 +55,7 @@ export default {
       );
       const datas = await response.json();
       if (datas) {
-        var noticias = datas.news.filter((item) => item.image);
+        var noticias = datas.results;
         this.news = noticias.slice(0, 5);
       }
     },
@@ -70,6 +73,7 @@ section {
   justify-content: flex-start;
   margin-left: -140px;
   border-right: 1px solid black;
+  margin-top: 50px;
 }
 
 

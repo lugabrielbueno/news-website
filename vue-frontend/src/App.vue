@@ -14,6 +14,9 @@
     </div>
   </div>
   <div class="container">
+     <div class="blur-overlay" id="loading">
+        <div class="spinner"></div>
+    </div>
     <div class='world_news'>
       <WorldNews />
     </div>
@@ -70,10 +73,37 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Jersey+25&family=Markazi+Text:wght@400..700&family=Roboto+Slab:wght@100..900&family=VT323&display=swap");
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid rgba(0, 0, 0, 0.2);
+    border-top: 6px solid black;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
 .header {
   width: 100%;
-  max-height: 100px;
+  margin-bottom:20px;
   display: flex;
   justify-content: center;
   align-items: flex-start;

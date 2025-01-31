@@ -3,8 +3,8 @@
     <div id="carouselExampleCaptions" class="carousel slide">
       <div class="carousel-inner">
         <div v-for="(noticia, index) in news_slide" :key="index" :class="['carousel-item', { active: index === 0 }]">
-          <a :href="noticia.url" class="link-rounded">
-            <img :src="noticia.image" class="slide_image" alt="..." />
+          <a :href="noticia.link" class="link-rounded">
+            <img :src="noticia.image_url" class="slide_image" alt="..." />
           </a>
           <div class="text-center">
             <h5>{{ noticia.title }}</h5>
@@ -35,7 +35,7 @@
         <h4 class='leia'>Leia também:</h4>
         <ul>
           <li class="list-notice" v-for="(noticia_lista, index) in news" :key="index">
-            <a class="link_url" :href="noticia_lista.url">
+            <a class="link_url" :href="noticia_lista.link">
               {{ noticia_lista.title }}</a>
           </li>
         </ul>
@@ -43,10 +43,11 @@
       <div class="right-news with-images">
         <ul>
           <li class="list-notice-img" v-for="(noticia_lista_img, index) in news_left" :key="index">
-            <a class="link_url" :href="noticia_lista_img.url">
-              <img :src="noticia_lista_img.image" />
+            <a class="link_url" :href="noticia_lista_img.link">
+              <img :src="noticia_lista_img.image_url" />
               <p class="data_info">
-                {{ formatDate(noticia_lista_img.published) }}
+                Fonte: {{ noticia_lista_img.source_name }}<br>
+                {{ formatDate(noticia_lista_img.pubDate) }}
               </p>
               <br />
               <p class="data_info_title">{{ noticia_lista_img.title }}</p>
@@ -63,12 +64,11 @@ export default {
   mounted() {
     this.searchNews();
   },
-
   data() {
     return {
       news: [],
       news_left: [],
-      category: "general",
+      category: "top",
       language: "pt",
       keywords: "",
       news_slide: [],
@@ -86,24 +86,32 @@ export default {
       return new Intl.DateTimeFormat("en-GB", options).format(new Date(date));
     },
     async searchNews() {
+
+      document.getElementById('loading').style.display = "flex";
       const category = this.$route.name;
       const keywords = this.keywords;
       const language = this.language;
-      const response = await fetch(
-        `http://localhost:8000/api/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
-        {
-          method: "GET",
-          credentials: 'include'
-        },
-      );
-      const datas = await response.json();
-      console.log(datas)
-      if (datas) {
-        var noticias = datas.news.filter((item) => item.image);
-        this.news_slide = noticias.slice(0, 3);
-        this.news = noticias.slice(3, 18);
-        this.news_left = noticias.slice(18, 22);
+      try {
+        const response = await fetch(
+          `http://localhost:8000/api/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
+          {
+            method: "GET",
+            credentials: 'include'
+          },
+        );
+        const datas = await response.json();
+        if (datas) {
+          var noticias = datas.results;
+          this.news_slide = noticias.slice(0, 3);
+          this.news = noticias.slice(3, 18);
+          this.news_left = noticias.slice(18, 22);
+        }
+      } catch (error) {
+        console.error(error)
+      } finally {
+        document.getElementById('loading').style.display = "none";
       }
+
     },
   },
   watch: {
@@ -121,13 +129,13 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 .container-geral {
-  width: 90%;
+  width: 85%;
   font-family: "Markazi Text", serif;
   min-height: 100vh;
 }
 
 section {
-  width: 85%;
+  width: 75%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -167,14 +175,14 @@ p.data_info_title {
 p.data_info {
   float: left;
   margin-left: 3px;
-  max-width: 200px;
+  max-width: 70px;
   color: rgba(50, 50, 50, 0.5);
   font-family: "Roboto Condensed";
   font-size: 12px;
 }
 
 .container-geral .left-news {
-  width: 65%;
+  width: 63%;
   float: left;
 }
 
@@ -188,7 +196,7 @@ p.data_info {
 }
 
 .container-geral .right-news {
-  width: 35%;
+  width: 37%;
   display: block;
   float: left;
 }
@@ -239,7 +247,7 @@ p.data_info {
 
 
 #carouselExampleCaptions .slide_image {
-  height: 250px;
+  height: 230px;
   margin-bottom: 20px;
   border-radius: 8px;
 }

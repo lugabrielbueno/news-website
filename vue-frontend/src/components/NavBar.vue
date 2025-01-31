@@ -1,22 +1,13 @@
 <template>
+  <a class="navbar-brand" href="#"><i class="material-icons">newspaper</i></a>
   <nav class="navbar navbar-expand-lg container-fluid d-flex">
     <div class="me-auto">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <form
-            @submit.prevent="searchNews"
-            action="/"
-            method="get"
-            name="search"
-          >
+          <form @submit.prevent="searchNews" action="/" method="get" name="search">
             <div class="row align-items-center">
               <div class="col-auto">
-                <input
-                  placeholder="Pesquisar"
-                  type="text"
-                  id="pesquisa_noticia"
-                  class="form-control form-control-sm"
-                />
+                <input placeholder="Pesquisar" type="text" id="pesquisa_noticia" class="form-control form-control-sm" />
               </div>
               <div class="col-md-2">
                 <button type="submit" class="btn btn-sm">
@@ -29,7 +20,6 @@
       </ul>
     </div>
 
-    <a class="navbar-brand" href="#"><i class="material-icons">newspaper</i></a>
     <div>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -39,14 +29,7 @@
           <RouterLink class="nav-link" to="/">Geral</RouterLink>
         </li>
         <li class="nav-item">
-          <RouterLink class="nav-link" to="/entertainment"
-            >Entretenimento</RouterLink
-          >
-        </li>
-        <li class="nav-item">
-          <RouterLink class="nav-link" to="/programming"
-            >Programação</RouterLink
-          >
+          <RouterLink class="nav-link" to="/entertainment">Entretenimento</RouterLink>
         </li>
         <li class="nav-item">
           <RouterLink class="nav-link" to="/sports">Esportes</RouterLink>
@@ -108,6 +91,8 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Jersey+25&family=Markazi+Text:wght@400..700&family=Roboto+Slab:wght@100..900&family=VT323&display=swap");
+
+
 nav.navbar {
   width: 100%;
   background-color: rgb(250, 250, 250);
@@ -116,17 +101,34 @@ nav.navbar {
   position: fixed;
   overflow: hidden;
   z-index: 10;
-  padding: 0px 350px;
-  margin-top: -5px;
+  padding: 0px 300px;
+  margin-top: 19px;
 }
+
+.navbar-brand {
+  width: 100%;
+  background-color: rgb(250,250,250);
+  color: rgb(10, 10, 10);
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  z-index: 10;
+  padding-top:20px;
+  overflow: hidden;
+}
+
 i {
   color: rgb(10, 10, 10);
 }
+
 .navbar ul.navbar-nav li.nav-item .nav-link {
   color: rgb(10, 10, 10);
   margin-left: 10px;
   font-size: 22px;
 }
+
 .navbar ul.navbar-nav li.nav-item .nav-link:hover {
   text-decoration: underline;
 }

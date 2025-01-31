@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "general",
+      name: "top",
       component: HomeView,
     },
 
@@ -41,11 +41,6 @@ const router = createRouter({
     {
       path: "/science",
       name: "science",
-      component: HomeView,
-    },
-    {
-      path: "/programming",
-      name: "programming",
       component: HomeView,
     },
     {
