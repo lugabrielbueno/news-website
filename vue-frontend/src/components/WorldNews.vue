@@ -43,20 +43,28 @@ export default {
       return new Intl.DateTimeFormat("en-GB", options).format(new Date(date));
     },
     async searchNewsWorld() {
-      const language = this.language;
-      const category = this.category;
-      const response = await fetch(
-        `http://localhost:8000/api/get-news.php?languages=${language}&categories=${category}`,
-        {
-          method: 'GET',
-          credentials: 'include'
+      try {
+        const language = this.language;
+        const category = this.category;
+        const response = await fetch(
+          `http://localhost:8000/api/get-news.php?languages=${language}&categories=${category}`,
+          {
+            method: 'GET',
+            credentials: 'include'
 
+          }
+        );
+        const datas = await response.json();
+        if (datas.status == 'error') {
+          throw new Error(datas.results.message)
         }
-      );
-      const datas = await response.json();
-      if (datas) {
-        var noticias = datas.results;
-        this.news = noticias.slice(0, 5);
+        if (datas) {
+          var noticias = datas.results;
+          this.news = noticias.slice(0, 5);
+        }
+
+      } catch (error) {
+        console.error(error)
       }
     },
   },

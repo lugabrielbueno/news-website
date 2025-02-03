@@ -101,11 +101,15 @@ export default {
         );
         const datas = await response.json();
         if (datas) {
+          if (datas.status == 'error') {
+            throw new Error(datas.message)
+          }
           var noticias = datas.results;
           this.news_slide = noticias.slice(0, 3);
-          this.news = noticias.slice(3, 18);
-          this.news_left = noticias.slice(18, 22);
+          this.news = noticias.slice(3, 14);
+          this.news_left = noticias.slice(14, 20);
         }
+
       } catch (error) {
         console.error(error)
       } finally {

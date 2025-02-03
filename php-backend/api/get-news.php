@@ -21,58 +21,56 @@ $language = $_GET['languages'] ?? '';
 $start_date = date('Y-m-01');
 $end_date = date('Y-m-31');
 
+
 $request = [
   'apikey' => $apiKey,
   'category' => $categories ?? NULL,
   'language' => $language,
-  //'size' => 11,
   'image' => 1,
   //'from_date' => $start_date,
   //'to_date' => $end_date
 ];
+if ($req == 2) {
+  $request['page'] = 2;
+}
 
 if ($keywords) {
   $request['q'] = $keywords;
 }
 
-if ($request['category'] == 'search' or $request['category'] == 'world') {
+if ($request['category'] == 'search') {
   unset($request['category']);
 }
 
-$queryString = http_build_query($request);
-if (isset($world)) {
-  $_SESSION[$categories][$language];
-}
 
-if (key_exists($categories,$_SESSION) and $_SESSION[$categories][$language] and !empty($_SESSION[$categories][$language]['results'])) {
+if (key_exists($categories, $_SESSION) and $_SESSION[$categories][$language] and !empty($_SESSION[$categories][$language]['results'])) {
   echo json_encode($_SESSION[$categories][$language]);
 } else {
-
-  // caso não tenha novas noticias busca as do ano passado
-  //  $year = date('Y') - 1;
-  //  $start_date = date($year . '-01-01');
-  //  $end_date = date($year . '-12-31');
-  //
-  //
-  //  $request['start_date'] = $start_date;
-  //  $request['end_date'] = $end_date;
-  //
-  //  $queryString = http_build_query($request);
-  //
-  $ch = curl_init(sprintf('%s?%s', 'https://newsdata.io/api/1/latest', $queryString));
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  $json_response = curl_exec($ch);
-  curl_close($ch);
-  $response = json_decode($json_response, true);
-
-
-  if (!key_exists('error', $response) and $response['status'] == 'success') {
-    if (empty($_SESSION[$categories][$language])) {
-      $_SESSION[$categories][$language] = json_decode($json_response, true);
+  $results = array();
+  $reqs = 2;
+  if ($language == 'en') {
+    $reqs = 1;
+  }
+  for ($i = 1; $i <= $reqs; $i++) {
+    if ($i == 2) {
+      $request['page'] = $response['nextPage'];
     }
-    echo $json_response;
-  } else {
-
+    $queryString = http_build_query($request);
+    $ch = curl_init(sprintf('%s?%s', 'https://newsdata.io/api/1/latest', $queryString));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $json_response = curl_exec($ch);
+    curl_close($ch);
+    $response = json_decode($json_response, true);
+    if (!key_exists('error', $response) and $response['status'] == 'success') {
+      $results = array_merge($response['results'], $results);
+    }
+  }
+  if (empty($_SESSION[$categories][$language]) and !empty($results)) {
+    $_SESSION[$categories][$language]['results'] = $results;
+    echo json_encode($_SESSION[$categories][$language]);
+  } else if (empty($results)) {
+    echo json_encode(array("error" => 'Nenhuma notícia encontrada.'));
+  } else if ($response['error']) {
     echo json_encode($response);
   }
 }
