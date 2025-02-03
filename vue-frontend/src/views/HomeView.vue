@@ -107,7 +107,7 @@ export default {
           var noticias = datas.results;
           this.news_slide = noticias.slice(0, 3);
           this.news = noticias.slice(3, 14);
-          this.news_left = noticias.slice(14, 20);
+          this.news_left = noticias.slice(14, 18);
         }
 
       } catch (error) {
@@ -174,33 +174,39 @@ p.data_info_title {
   font-family: "Markazi Text", serif;
   font-size: 18px;
   width: 100%;
+  margin-top: -10px;
 }
 
 p.data_info {
   float: left;
-  margin-left: 3px;
-  max-width: 70px;
+  margin-left: 2px;
+  max-width: 90px;
   color: rgba(50, 50, 50, 0.5);
   font-family: "Roboto Condensed";
   font-size: 12px;
 }
 
 .container-geral .left-news {
-  width: 63%;
+  width: 64%;
   float: left;
 }
 
 .right-news ul li {
   overflow: hidden;
+  padding:10px;
+  border-right:1px solid black;
 }
 
 .right-news ul {
   height: 100%;
   overflow: hidden;
+
+
+
 }
 
 .container-geral .right-news {
-  width: 37%;
+  width: 36%;
   display: block;
   float: left;
 }
