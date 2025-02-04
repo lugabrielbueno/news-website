@@ -42,19 +42,23 @@
         <div class='conteudo-extra'>
           <hr>
           <h4 class='ciberseguranca'>Cibersegurança</h4>
-          <img class='img_extra' src='https://www.psafe.com/blog/wp-content/uploads/2021/10/aviso-de-perigo-seguranca-digital-1.jpg' width='300' >
+          <img class='img_extra'
+            src='https://www.psafe.com/blog/wp-content/uploads/2021/10/aviso-de-perigo-seguranca-digital-1.jpg'
+            width='300'>
           <h5 class='title-extra'>O que é segurança digital? Entenda</h5>
           <article>
             <p>
-              <span class='subtitle'>Descubra a importância da segurança digital pessoal como empresarial, quais são as principais ameaças e as
-              melhores dicas de como se proteger.
+              <span class='subtitle'>Descubra a importância da segurança digital pessoal como empresarial, quais são as
+                principais ameaças e as
+                melhores dicas de como se proteger.
               </span><br>
               Segurança digital é o nome para a prática de proteger dispositivos pessoais ou de armazenamento, sistemas,
               redes, servidores, programas e Internet das Coisas (IoT) contra ataques cibernéticos. Nos dias de hoje
               quase tudo pode ser feito virtualmente, por exemplo, ir pessoalmente a bancos e supermercados já não é
               mais necessário, é possível fazer tudo isso através da internet.
             </p>
-            <a href='https://www.psafe.com/blog/o-que-e-seguranca-digital/' target='_blank' class='btn  leia_mais' >Leia mais</a>
+            <a href='https://www.psafe.com/blog/o-que-e-seguranca-digital/' target='_blank' class='btn  leia_mais'>Leia
+              mais</a>
 
           </article>
 
@@ -154,13 +158,13 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 .container-geral {
-  width: 85%;
+  width: 100%;
   font-family: "Markazi Text", serif;
   min-height: 100vh;
 }
 
 section {
-  width: 75%;
+  width: 80%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -170,24 +174,28 @@ section {
   float: left;
 
 }
-.conteudo-extra{
+
+.conteudo-extra {
   margin-top: 70px;
+  width: 95%;
+  margin-left: 20px;
 }
 
-.conteudo-extra p .subtitle{
-  font-size:13px;
-  line-height:1.0em;
-  font-family:"Roboto Condensed";
-  color: rgba(0,0,0,0.6);
+.conteudo-extra p .subtitle {
+  font-size: 13px;
+  line-height: 1.0em;
+  font-family: "Roboto Condensed";
+  color: rgba(0, 0, 0, 0.6);
 }
-.conteudo-extra p{
-  font-size:20px;
-  line-height:1.3em;
-  
+
+.conteudo-extra p {
+  font-size: 20px;
+  line-height: 1.3em;
+
 }
 
 .img_extra {
-  border-radius:5px;
+  border-radius: 5px;
 }
 
 h4.destaques {
@@ -201,6 +209,7 @@ h4.destaques {
   align-items: center;
   align-self: center;
 }
+
 h4.ciberseguranca {
   font-size: 28px;
   margin-left: 5px;
@@ -228,17 +237,17 @@ h4.leia {
 
 h5.title-extra {
   font-size: 25px;
-  text-align:left;
+  text-align: left;
   color: rgb(30, 30, 30, 0.9);
-  margin-left:0;
-  padding-left:10px;
+  margin-left: 0;
+  padding-left: 10px;
 }
 
 h5 {
   font-family: "Markazi Text", serif;
   font-size: 25px;
   padding: 0px 60px;
-  text-align:left;
+  text-align: left;
   color: rgb(30, 30, 30, 0.9);
 }
 
@@ -326,14 +335,17 @@ p.data_info {
 .list-notice .link_url:hover {
   text-decoration: underline;
 }
+
 a.leia_mais:hover {
-  background-color:rgb(0,0,0,0.8);
-  color:white;
+  background-color: rgb(0, 0, 0, 0.8);
+  color: white;
 }
+
 a.leia_mais {
-  background-color:rgb(0,0,0,0.05);
-  font-size:20px;
-  border:1px solid black;
+  font-size: 16px;
+  font-family: "Roboto Condensed";
+  border: 3px solid rgb(0, 0, 0, 0.8);
+  border-radius: 0;
 }
 
 .list-notice .link_url {
@@ -385,5 +397,104 @@ div.carousel-indicators button {
 div.carousel button.carousel-control-prev span.carousel-control-prev-icon,
 div.carousel button.carousel-control-next span.carousel-control-next-icon {
   background-color: rgba(20, 20, 20, 0.2);
+}
+
+
+@media (max-width:768px) {
+  section {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container-geral {
+    width: 90%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+  }
+
+  .container-geral .left-news li {
+    margin-left:15px;
+    line-height:1.2em;
+    list-style-type:disc;
+
+  }
+  .container-geral .left-news {
+    width: 100%;
+    margin: 5px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+  }
+
+  .container-geral .right-news li {
+    border: none;
+    margin: 10px 10px;
+    padding: 0;
+  }
+
+  .container-geral .right-news ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+
+  .container-geral .left-news ul {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+
+  .container-geral .right-news {
+    width: 100%;
+    margin: 0;
+    margin-top: 40px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+
+  }
+
+  p.data_info_title {
+    margin-top: 0;
+  }
+
+  #carouselExampleCaptions {
+    width: 90%;
+    display: block;
+  }
+
+  div.carousel h5 .text-center {
+    width: 100%;
+    display: block;
+
+  }
+
+  h4.leia {
+    font-size: 35px;
+    border-left: 5px solid rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.8);
+    height: 25px;
+    margin: 0;
+    display: relative;
+    margin-top: 20px;
+    width: 100%;
+  }
+  .conteudo-extra {
+    width:100%;
+    display:block;
+    padding:0;
+    margin:20px 10px;
+  }
 }
 </style>

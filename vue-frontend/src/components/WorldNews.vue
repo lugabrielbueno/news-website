@@ -75,11 +75,9 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 section {
-  position: absolute;
-  width: 11%;
   display: flex;
   justify-content: flex-start;
-  margin-left: -140px;
+  margin-left: 0px;
   border-right: 1px solid black;
   margin-top: 50px;
 }
@@ -103,13 +101,13 @@ h4 {
   font-family: "Markazi Text", serif;
   margin-left: 25px;
   font-size: 28px;
-  border-left: 5px solid rgba(0,0,0,0.8);
-  color: rgba(0,0,0,0.8);
+  border-left: 5px solid rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   padding-left: 10px;
-  height:20px;
-  display:flex;
-  align-items:center;
-  align-self:center;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  align-self: center;
 }
 
 p.data_info {
@@ -176,5 +174,19 @@ p.data_info {
 .link-rounded img {
   border: 3px solid transparent;
   border-radius: 5px;
+}
+
+@media (max-width:768px) {
+  section {
+    display: block;
+    width: 100%;
+  }
+
+  section .right-news {
+    display: block;
+    width: 100%;
+
+  }
+
 }
 </style>

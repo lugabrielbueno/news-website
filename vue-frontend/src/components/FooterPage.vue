@@ -87,10 +87,9 @@ p {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   color: white;
-  margin:0;
+  margin: 0;
   padding: 30px;
 }
-
 
 .container-footer {
   width: 100%;
@@ -102,5 +101,15 @@ p {
 
 .btn-span {
   font-weight: bold;
+}
+
+@media (max-width:768px) {
+  .container .container-footer {
+    display: block;
+  }
+
+  .container .container-footer #newsletter_form {
+    display: block;
+  }
 }
 </style>
