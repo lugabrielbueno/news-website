@@ -30,9 +30,7 @@ $request = [
   //'from_date' => $start_date,
   //'to_date' => $end_date
 ];
-if ($req == 2) {
-  $request['page'] = 2;
-}
+
 
 if ($keywords) {
   $request['q'] = $keywords;

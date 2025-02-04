@@ -23,9 +23,8 @@
 
       </div>
     </form>
-    <hr />
-    <p>© {{ year }} All rights reserved</p>
   </div>
+  <p class='rights'>© {{ year }} All rights reserved</p>
 </template>
 <script>
 export default {
@@ -70,7 +69,7 @@ p {
   font-size: 18px;
 }
 
-.container-footer #newsletter_form .col-md-7{
+.container-footer #newsletter_form .col-md-7 {
   text-align: left;
 }
 
@@ -79,11 +78,23 @@ p {
   margin-top: 25px;
   margin-bottom: 80px;
   text-align: center;
+  border: 1px solid rgb(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.rights {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  margin:0;
+  padding: 30px;
 }
 
 
 .container-footer {
   width: 100%;
+  justify-content: center;
   margin-top: 50px;
   flex-direction: column;
 

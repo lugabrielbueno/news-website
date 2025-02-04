@@ -103,6 +103,13 @@ h4 {
   font-family: "Markazi Text", serif;
   margin-left: 25px;
   font-size: 28px;
+  border-left: 5px solid rgba(0,0,0,0.8);
+  color: rgba(0,0,0,0.8);
+  padding-left: 10px;
+  height:20px;
+  display:flex;
+  align-items:center;
+  align-self:center;
 }
 
 p.data_info {

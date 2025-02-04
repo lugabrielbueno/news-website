@@ -102,7 +102,7 @@ nav.navbar {
   overflow: hidden;
   z-index: 10;
   padding: 0px 300px;
-  margin-top: 19px;
+  margin-top: 25px;
 }
 
 .navbar-brand {
@@ -115,7 +115,7 @@ nav.navbar {
   align-items: center;
   align-self: center;
   z-index: 10;
-  padding-top:20px;
+  padding-top:25px;
   overflow: hidden;
 }
 

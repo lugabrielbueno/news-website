@@ -86,6 +86,10 @@ export default {
     align-items: center;
     z-index: 1000;
 }
+.footer {
+  margin:0;
+  padding:0;
+}
 
 .spinner {
     width: 50px;

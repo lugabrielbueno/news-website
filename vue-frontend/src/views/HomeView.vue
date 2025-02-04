@@ -39,9 +39,30 @@
               {{ noticia_lista.title }}</a>
           </li>
         </ul>
+        <div class='conteudo-extra'>
+          <hr>
+          <h4 class='ciberseguranca'>Cibersegurança</h4>
+          <img class='img_extra' src='https://www.psafe.com/blog/wp-content/uploads/2021/10/aviso-de-perigo-seguranca-digital-1.jpg' width='300' >
+          <h5 class='title-extra'>O que é segurança digital? Entenda</h5>
+          <article>
+            <p>
+              <span class='subtitle'>Descubra a importância da segurança digital pessoal como empresarial, quais são as principais ameaças e as
+              melhores dicas de como se proteger.
+              </span><br>
+              Segurança digital é o nome para a prática de proteger dispositivos pessoais ou de armazenamento, sistemas,
+              redes, servidores, programas e Internet das Coisas (IoT) contra ataques cibernéticos. Nos dias de hoje
+              quase tudo pode ser feito virtualmente, por exemplo, ir pessoalmente a bancos e supermercados já não é
+              mais necessário, é possível fazer tudo isso através da internet.
+            </p>
+            <a href='https://www.psafe.com/blog/o-que-e-seguranca-digital/' target='_blank' class='btn  leia_mais' >Leia mais</a>
+
+          </article>
+
+        </div>
       </div>
       <div class="right-news with-images">
         <ul>
+          <h4 class='destaques'>Destaques</h4>
           <li class="list-notice-img" v-for="(noticia_lista_img, index) in news_left" :key="index">
             <a class="link_url" :href="noticia_lista_img.link">
               <img :src="noticia_lista_img.image_url" />
@@ -149,16 +170,75 @@ section {
   float: left;
 
 }
+.conteudo-extra{
+  margin-top: 70px;
+}
+
+.conteudo-extra p .subtitle{
+  font-size:13px;
+  line-height:1.0em;
+  font-family:"Roboto Condensed";
+  color: rgba(0,0,0,0.6);
+}
+.conteudo-extra p{
+  font-size:20px;
+  line-height:1.3em;
+  
+}
+
+.img_extra {
+  border-radius:5px;
+}
+
+h4.destaques {
+  font-size: 30px;
+  margin-left: 20px;
+  padding-left: 10px;
+  border-left: 5px solid rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.8);
+  height: 20px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+h4.ciberseguranca {
+  font-size: 28px;
+  margin-left: 5px;
+  padding-left: 10px;
+  border-left: 5px solid rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.8);
+  height: 20px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+
 
 h4.leia {
   font-size: 35px;
   margin-left: 20px;
+  padding-left: 10px;
+  border-left: 5px solid rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.8);
+  height: 25px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+}
+
+h5.title-extra {
+  font-size: 25px;
+  text-align:left;
+  color: rgb(30, 30, 30, 0.9);
+  margin-left:0;
+  padding-left:10px;
 }
 
 h5 {
   font-family: "Markazi Text", serif;
   font-size: 25px;
   padding: 0px 60px;
+  text-align:left;
   color: rgb(30, 30, 30, 0.9);
 }
 
@@ -193,8 +273,8 @@ p.data_info {
 
 .right-news ul li {
   overflow: hidden;
-  padding:10px;
-  border-right:1px solid black;
+  padding: 10px;
+  border-right: 1px solid black;
 }
 
 .right-news ul {
@@ -238,8 +318,22 @@ p.data_info {
   width: 100%;
 }
 
+.list-notice-img .link_url {
+
+  border-bottom: 1px solid rgba(10, 10, 10, 0.4);
+}
+
 .list-notice .link_url:hover {
   text-decoration: underline;
+}
+a.leia_mais:hover {
+  background-color:rgb(0,0,0,0.8);
+  color:white;
+}
+a.leia_mais {
+  background-color:rgb(0,0,0,0.05);
+  font-size:20px;
+  border:1px solid black;
 }
 
 .list-notice .link_url {
