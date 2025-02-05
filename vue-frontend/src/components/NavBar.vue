@@ -1,20 +1,20 @@
 <template>
   <div class='container'>
-    <a class="menu" @click="openMenu"><i class="material-icons">menu</i></a>
-    <a class="navbar-brand" :class="{ show: displayMenu }" href="#"><i class="material-icons">newspaper</i></a>
+    <a class="menu" @click="openMenu"><i class="mdi mdi-menu"></i></a>
+    <a class="menu" @click="openMenu"><i class="mdi mdi-magnify"></i></a>
+    <a class="navbar-brand" href="#"><span>news</span><i class="mdi mdi-newspaper"></i></a>
     <nav class="navbar navbar-expand-lg " :class="{ show: displayMenu }">
-      <div class="me-auto">
+      <div class="mx-auto">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <form @submit.prevent="searchNews" action="/" method="get" name="search">
-              <div class="row align-items-center">
+            <form @submit.prevent="searchNews" action="/" method="get" name="search" id='search'>
+              <div class="row">
                 <div class="col-auto">
-                  <input placeholder="Pesquisar" type="text" id="pesquisa_noticia"
-                    class="form-control form-control-sm" />
+                  <input placeholder="Pesquisar" type="text" id="pesquisa_noticia" class="form-control " />
                 </div>
-                <div class="col-md-2">
-                  <button type="submit" class="btn btn-sm">
-                    <i class="material-icons">search</i>
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-sm search">
+                    <i class="mdi mdi-magnify"></i>
                   </button>
                 </div>
               </div>
@@ -23,7 +23,7 @@
         </ul>
       </div>
 
-      <div>
+      <div class='items-navigation'>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <RouterLink class="nav-link" to="/">Início</RouterLink>
@@ -111,8 +111,12 @@ nav.navbar {
   overflow: hidden;
   z-index: 10;
   padding: 0px 300px;
-  margin-top: 25px;
-  display:flex;
+  margin-top: 26px;
+  display: flex;
+}
+
+.navbar-brand span {
+  display: none;
 }
 
 .navbar-brand {
@@ -124,6 +128,8 @@ nav.navbar {
   flex-direction: column;
   align-items: center;
   align-self: center;
+  margin-top: -12px;
+  padding: 0;
   z-index: 10;
   overflow: hidden;
 }
@@ -144,51 +150,118 @@ i {
   text-decoration: underline;
 }
 
+.navbar .btn-sm.search i {
+  color: white;
+  font-size: 20px;
+}
+
+.navbar .btn-sm.search {
+  background-color: rgb(0, 0, 0, 0.3);
+  border-radius: 3px;
+  padding: 0 8px;
+}
+
+input.form-control {
+  font-family: "Roboto Condensed";
+  font-size:13px;
+}
+
+input.form-control:focus {
+  box-shadow: none;
+  border-color: black;
+}
+
+.navbar-brand i.mdi {
+  font-size: 22px;
+}
+
+.menu i.mdi {
+  font-size: 30px;
+}
+
 @media (max-width:768px) {
-  nav.navbar {
+  div.container nav.navbar {
     height: 0;
     width: 0;
-    display: none;
   }
 
-  .material-icons {
-    font-size: 35px;
+  .navbar-brand i.mdi {
+    font-size: 30px;
+    padding: 2px 25px;
   }
 
   .navbar-brand {
-    height: 0;
-    width: 0;
-    display: none;
     background-color: transparent;
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    flex-direction: row;
+    font-size: 24px;
+    margin-left: 100px;
+    font-family: "Roboto Condensed";
+    margin-top: 0px;
   }
+
+  .navbar-brand span {
+    display: inline-flex;
+    font-weight: bold;
+  }
+
 
   a.menu {
-    display: block;
-    width: 100%;
-    height: 100%;
     text-align: left;
     margin: 0;
-    padding: 10px;
-    border-style: ridge;
-    border-color: rgba(0, 0, 0, 0.8);
+    padding: 5px;
+    margin: 2px 10px;
     cursor: pointer;
-
   }
 
-  .show {
-    display: flex;
-    width: auto;
-    height: auto;
-    position:absolute;
-    align-items:center;
-    text-align:center;
-    z-index:50;
-
-  }
-  .container {
+  div.container nav.navbar ul.navbar-nav form#search .row {
     width:100%;
-    padding:0;
-    display:flex;
+  }
+  nav.navbar .navbar-nav form#search .row .col-auto {
+    float:left;
+    width:50%;
+  }
+
+
+  .navbar .items-navigation {
+    width: 100%;
+    position: relative;
+  }
+
+  div.container nav.navbar.show {
+    align-items: flex-start;
+    align-self: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 700px;
+    text-align: left;
+    position: absolute;
+    z-index: 100;
+    margin-top: 7px;
+    padding: 0;
+    transition: width 0.8s ease-in-out;
+    border-bottom:5px solid black;
+  }
+
+  .navbar .items-navigation ul.navbar-nav li.nav-item {
+    border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+  }
+
+  .navbar ul.navbar-nav li.nav-item .nav-link {
+    font-size: 28px;
+    text-decoration: underline;
+  }
+
+  .container {
+    background-color: rgb(250, 250, 250);
+    position: fixed;
+    padding: 5px 0;
+    display: flex;
+    z-index: 100;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.15);
   }
 }
 </style>

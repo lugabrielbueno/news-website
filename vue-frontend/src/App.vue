@@ -6,11 +6,11 @@
   <hr class="divider" />
   <div class="messages">
     <div class="alert alert-success" v-if="alertaInscrito" role="alert">
-      <i class="material-icons">check</i>
+      <i class="mdi mdi-check"></i>
       Você receberá noticias toda manhã, obrigado por se inscrever!
     </div>
     <div class="alert alert-danger" v-if="alertaNoData" role="alert">
-      <i class="material-icons">info</i>
+      <i class="mdi mdi-info"></i>
       Não foi possível encontrar dados com a pesquisa.
     </div>
   </div>
@@ -180,6 +180,9 @@ h1 {
 @media (max-width:768px) {
   .world_news {
     display: none;
+  }
+  header.header {
+    margin-bottom:50px;
   }
 
   .container {

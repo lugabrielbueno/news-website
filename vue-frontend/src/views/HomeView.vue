@@ -57,9 +57,9 @@
               quase tudo pode ser feito virtualmente, por exemplo, ir pessoalmente a bancos e supermercados já não é
               mais necessário, é possível fazer tudo isso através da internet.
             </p>
-            <a href='https://www.psafe.com/blog/o-que-e-seguranca-digital/' target='_blank' class='btn  leia_mais'>Leia
+            <a href='https://www.psafe.com/blog/o-que-e-seguranca-digital/' target='_blank' class='btn  leia_mais'><i
+                class='mdi mdi-plus'></i>Leia
               mais</a>
-
           </article>
 
         </div>
@@ -344,6 +344,7 @@ a.leia_mais:hover {
 a.leia_mais {
   font-size: 16px;
   font-family: "Roboto Condensed";
+  font-weight: 500;
   border: 3px solid rgb(0, 0, 0, 0.8);
   border-radius: 0;
 }
@@ -399,6 +400,10 @@ div.carousel button.carousel-control-next span.carousel-control-next-icon {
   background-color: rgba(20, 20, 20, 0.2);
 }
 
+section .container-geral i.mdi {
+  font-size: 20px;
+}
+
 
 @media (max-width:768px) {
   section {
@@ -419,12 +424,18 @@ div.carousel button.carousel-control-next span.carousel-control-next-icon {
     align-self: flex-start;
   }
 
+  #carouselExampleCaptions .slide_image {
+    width: 95%;
+    height: auto;
+  }
+
   .container-geral .left-news li {
-    margin-left:15px;
-    line-height:1.2em;
-    list-style-type:disc;
+    margin-left: 15px;
+    line-height: 1.2em;
+    list-style-type: disc;
 
   }
+
   .container-geral .left-news {
     width: 100%;
     margin: 5px;
@@ -474,10 +485,10 @@ div.carousel button.carousel-control-next span.carousel-control-next-icon {
     display: block;
   }
 
-  div.carousel h5 .text-center {
+  div.carousel .text-center h5 {
     width: 100%;
     display: block;
-
+    padding: 5px 20px;
   }
 
   h4.leia {
@@ -490,11 +501,13 @@ div.carousel button.carousel-control-next span.carousel-control-next-icon {
     margin-top: 20px;
     width: 100%;
   }
+
+
   .conteudo-extra {
-    width:100%;
-    display:block;
-    padding:0;
-    margin:20px 10px;
+    width: 100%;
+    display: block;
+    padding: 0;
+    margin: 20px 10px;
   }
 }
 </style>

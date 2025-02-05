@@ -2,7 +2,7 @@
   <div class="container container-footer">
     <h5>
       Inscreva-se para receber a nossa newsletter
-      <i class="material-icons">coffee</i>
+      <i class="mdi mdi-coffee"></i>
     </h5>
     <form @submit.prevent="receberForm" action="http://localhost:8001/subscribe.php" method="post"
       name="newsletter_form" id='newsletter_form'>
@@ -15,12 +15,14 @@
               <input class="form-control" id="email" name="email" type="email" />
             </div>
           </div>
+          <div class='row'>
+            <div class='col-md-2 mx-auto'>
+              <button class="btn cadastrar_news btn-sm" type='submit'>
+                <i class="mdi mdi-check"></i><span class='btn-span'> Cadastrar</span>
+              </button>
+            </div>
+          </div>
         </div>
-        <br>
-        <button class="btn btn-success btn-sm " type='submit'>
-          <i class="material-icons">check</i><span class='btn-span'> Cadastrar</span>
-        </button>
-
       </div>
     </form>
   </div>
@@ -72,12 +74,14 @@ p {
 .container-footer #newsletter_form .col-md-7 {
   text-align: left;
 }
+.container-footer i.mdi {
+  font-size:20px;
+}
 
 .container-footer #newsletter_form {
   width: 100%;
   margin-top: 25px;
   margin-bottom: 80px;
-  text-align: center;
   border: 1px solid rgb(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 20px;
@@ -93,7 +97,6 @@ p {
 
 .container-footer {
   width: 100%;
-  justify-content: center;
   margin-top: 50px;
   flex-direction: column;
 
@@ -102,6 +105,25 @@ p {
 .btn-span {
   font-weight: bold;
 }
+
+.btn.cadastrar_news:hover {
+  background-color: rgb(0, 0, 0, 0.8);
+  color: white;
+}
+
+.btn.cadastrar_news {
+  border: 3px solid rgb(0, 0, 0, 0.8);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+
+
+}
+
+.row {
+  margin-top: 10px;
+}
+
 
 @media (max-width:768px) {
   .container .container-footer {
