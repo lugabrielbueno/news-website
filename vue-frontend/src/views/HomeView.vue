@@ -95,7 +95,6 @@ export default {
       news_left: [],
       category: "top",
       language: "pt",
-      keywords: "",
       news_slide: [],
     };
   },
@@ -114,7 +113,7 @@ export default {
 
       document.getElementById('loading').style.display = "flex";
       const category = this.$route.name;
-      const keywords = this.keywords;
+      const keywords = this.$route.query.q;
       const language = this.language;
       try {
         const response = await fetch(

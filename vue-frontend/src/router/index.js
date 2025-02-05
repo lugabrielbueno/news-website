@@ -48,6 +48,11 @@ const router = createRouter({
       name: "politics",
       component: HomeView,
     },
+    {
+      path: "/search",
+      name: "search",
+      component: HomeView,
+    },
   ],
 });
 

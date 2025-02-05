@@ -7,7 +7,7 @@
       <div class="mx-auto">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <form @submit.prevent="searchNews" action="/" method="get" name="search" id='search'>
+            <form @submit.prevent="redir" action="/" method="get" name="search" id='search'>
               <div class="row">
                 <div class="col-auto">
                   <input placeholder="Pesquisar" type="text" id="pesquisa_noticia" class="form-control " />
@@ -71,30 +71,28 @@ export default {
       this.displayMenu = !this.displayMenu
 
     },
-    async searchNews() {
-      const keywords = document.getElementById("pesquisa_noticia").value;
-      document.getElementById("pesquisa_noticia").value = '';
-      const language = this.languages;
-      const response = await fetch(
-        `http://localhost:8001/api/get-news.php?languages=${language}&keywords=${keywords}`,
-        {
-          method: "GET",
-          credentials: "include",
-        },
-      );
-      const datas = await response.json();
-      if (!datas) {
+    redir() {
+      const querySearch = document.getElementById('pesquisa_noticia').value
+
+      document.getElementById('pesquisa_noticia').value = ""
+      try {
         sessionStorage.setItem("nodata", true);
-        location.href = "http://localhost:5173/";
-      } else {
-        var noticias = datas.data.filter((item) => item.image);
-        this.news_slide = noticias.slice(0, 3);
-        this.news = noticias.slice(3, 18);
-        this.news_left = noticias.slice(18, 35);
-        return;
+        this.$router.push(
+
+          {
+            path: '/search',
+            query: { q: querySearch }
+          }
+        )
+      } catch (error) {
+        console.error(error)
       }
+
+
     },
   },
+ 
+
 };
 </script>
 
@@ -163,7 +161,7 @@ i {
 
 input.form-control {
   font-family: "Roboto Condensed";
-  font-size:13px;
+  font-size: 13px;
 }
 
 input.form-control:focus {
@@ -216,12 +214,15 @@ input.form-control:focus {
     cursor: pointer;
   }
 
-  div.container nav.navbar ul.navbar-nav form#search .row {
-    width:100%;
+  div.container nav.navbar div.mx-auto,
+  div.container nav.navbar div.mx-auto ul.navbar-nav {
+    width: 100%;
   }
+
   nav.navbar .navbar-nav form#search .row .col-auto {
-    float:left;
-    width:50%;
+    float: left;
+    width: 44%;
+    margin: 15px 10px;
   }
 
 
@@ -242,8 +243,8 @@ input.form-control:focus {
     z-index: 100;
     margin-top: 7px;
     padding: 0;
-    transition: width 0.8s ease-in-out;
-    border-bottom:5px solid black;
+    transition: width 0.5s ease-in-out;
+    border-bottom: 5px solid black;
   }
 
   .navbar .items-navigation ul.navbar-nav li.nav-item {
@@ -253,6 +254,11 @@ input.form-control:focus {
   .navbar ul.navbar-nav li.nav-item .nav-link {
     font-size: 28px;
     text-decoration: underline;
+  }
+
+  input.form-control {
+    height: 40px;
+    width: 120%;
   }
 
   .container {

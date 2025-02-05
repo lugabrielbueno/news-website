@@ -16,7 +16,7 @@ $headers = array(
 );
 
 $keywords = $_GET['keywords'] ??  '';
-$categories = $_GET['categories'] ?? 'search';
+$categories = $_GET['categories'] ?? '';
 $language = $_GET['languages'] ?? '';
 $start_date = date('Y-m-01');
 $end_date = date('Y-m-31');
@@ -33,11 +33,17 @@ $request = [
 
 
 if ($keywords) {
+  if (str_contains($keywords, " ")) {
+    $keywords = explode(" ", $keywords);
+
+    $keywords = implode(" OR ", $keywords);
+  }
   $request['q'] = $keywords;
 }
 
 if ($request['category'] == 'search') {
   unset($request['category']);
+  unset($_SESSION[$categories]);
 }
 
 

@@ -34,6 +34,7 @@
   </div>
 </template>
 <script>
+
 import NavBar from "./components/NavBar.vue";
 import FooterPage from "./components/FooterPage.vue";
 import WorldNews from "./components/WorldNews.vue";
@@ -42,17 +43,17 @@ export default {
   name: "App",
   data() {
     return {
-      alertaInscrito: "",
-      alertaNoData: "",
+      alertaInscrito: false,
+      alertaNoData: false,
     };
   },
   created() {
     document.title = "News Website";
   },
   mounted() {
-    this.alertaInscrito = sessionStorage.getItem("subscribed");
-    this.alertaNoData = sessionStorage.getItem("nodata");
-    sessionStorage.removeItem("subscribed");
+    this.alertaInscrito = sessionStorage.getItem("subscribed") ? sessionStorage.getItem("subscribed") : false;
+    this.alertaNoData = sessionStorage.getItem("nodata") ? sessionStorage.getItem("nodata") : false;
+    sessionStorage.clear()
   },
   methods: {
     beforeEnter(el) {
@@ -119,8 +120,9 @@ export default {
     transform: rotate(360deg);
   }
 }
+
 h1 {
-  display:none;
+  display: none;
 }
 
 .header {
@@ -181,8 +183,9 @@ h1 {
   .world_news {
     display: none;
   }
+
   header.header {
-    margin-bottom:50px;
+    margin-bottom: 50px;
   }
 
   .container {
@@ -196,7 +199,7 @@ h1 {
     text-align: center;
     margin-top: 40px;
     font-family: "Roboto Condensed";
-    font-size:35px;
+    font-size: 35px;
   }
 
   .divider {

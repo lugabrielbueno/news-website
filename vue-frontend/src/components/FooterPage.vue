@@ -74,8 +74,9 @@ p {
 .container-footer #newsletter_form .col-md-7 {
   text-align: left;
 }
+
 .container-footer i.mdi {
-  font-size:20px;
+  font-size: 20px;
 }
 
 .container-footer #newsletter_form {
@@ -122,6 +123,14 @@ p {
 
 .row {
   margin-top: 10px;
+}
+
+input.form-control:focus {
+  box-shadow:none;
+}
+
+input.form-control {
+  border: 1px solid black;
 }
 
 
