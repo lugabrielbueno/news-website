@@ -117,7 +117,7 @@ export default {
       const language = this.language;
       try {
         const response = await fetch(
-          `http://localhost:8000/api/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
+          `./api/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
           {
             method: "GET",
             credentials: 'include'

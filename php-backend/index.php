@@ -36,6 +36,10 @@ try {
     loadEnv('.env');
     $_SESSION['apiKey'] = getenv('API_KEY') . PHP_EOL;
   }
+  if (!$_SESSION['apiUrl']) {
+    loadEnv('.env');
+    $_SESSION['apiUrl'] = getenv('API_URL') . PHP_EOL;
+  }
 } catch (Exception $e) {
   echo $e->getMessage();
 }

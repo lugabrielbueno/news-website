@@ -47,7 +47,7 @@ export default {
         const language = this.language;
         const category = this.category;
         const response = await fetch(
-          `http://localhost:8000/api/get-news.php?languages=${language}&categories=${category}`,
+          `./api/get-news.php?languages=${language}&categories=${category}`,
           {
             method: 'GET',
             credentials: 'include'

@@ -3,15 +3,15 @@
 session_start();
 
 
-header("Access-Control-Allow-Origin: http://localhost:5173");
 header('Access-Control-Allow-Headers: Access-Control-Allow-Origin, Content-Type, Authorization');
 header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Origin: *");
 
 
 $apiKey = trim($_SESSION['apiKey']) ?? '';
 $headers = array(
   "Content-Type: application/json",
-  'Access-Control-Allow-Origin: http://localhost:5173',
+  'Access-Control-Allow-Origin: *' 
   "Authorization: {$apiKey}",
 );
 

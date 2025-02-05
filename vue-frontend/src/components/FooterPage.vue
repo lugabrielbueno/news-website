@@ -4,8 +4,8 @@
       Inscreva-se para receber a nossa newsletter
       <i class="mdi mdi-coffee"></i>
     </h5>
-    <form @submit.prevent="receberForm" action="http://localhost:8001/subscribe.php" method="post"
-      name="newsletter_form" id='newsletter_form'>
+    <form @submit.prevent="receberForm" action="subscribe.php" method="post" name="newsletter_form"
+      id='newsletter_form'>
       <div class="container content">
         <div class="row">
           <div class='col-md-7 mx-auto'>
@@ -38,8 +38,8 @@ export default {
   },
   methods: {
     receberForm() {
-      location.href = "http://localhost:5173/";
       sessionStorage.setItem("subscribed", true);
+      this.$route.push('/')
     },
   },
 };
@@ -126,7 +126,7 @@ p {
 }
 
 input.form-control:focus {
-  box-shadow:none;
+  box-shadow: none;
 }
 
 input.form-control {
