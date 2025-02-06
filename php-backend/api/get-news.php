@@ -9,9 +9,7 @@ loadEnv(__DIR__ . '/../.env');
 $apiKey = getenv('API_KEY');
 
 header("Content-Type: application/json");
-//if ($env == "DEV") {
-//  header("Access-Control-Allow-Origin: http://localhost:5173");
-//}
+header("Access-Control-Allow-Origin: http://localhost:5173");
 
 $headers = array(
   "Content-Type: application/json",
