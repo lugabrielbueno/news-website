@@ -2,16 +2,20 @@
 
 session_start();
 
+require __DIR__ . '/../functions.php';
 
-header('Access-Control-Allow-Headers: Access-Control-Allow-Origin, Content-Type, Authorization');
-header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Allow-Origin: *");
+loadEnv(__DIR__ . '/../.env');
+
+$apiKey = getenv('API_KEY');
+
+header("Content-Type: application/json");
+//if ($env == "DEV") {
+//  header("Access-Control-Allow-Origin: http://localhost:5173");
+//}
 
 
-$apiKey = trim($_SESSION['apiKey']) ?? '';
 $headers = array(
   "Content-Type: application/json",
-  'Access-Control-Allow-Origin: *' 
   "Authorization: {$apiKey}",
 );
 

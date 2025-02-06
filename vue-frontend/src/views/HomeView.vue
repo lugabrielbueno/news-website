@@ -84,6 +84,7 @@
   </section>
 </template>
 <script>
+
 export default {
   name: "HomeView",
   mounted() {
@@ -92,6 +93,7 @@ export default {
   data() {
     return {
       news: [],
+      api_url: import.meta.env.VITE_API_URL,
       news_left: [],
       category: "top",
       language: "pt",
@@ -117,10 +119,9 @@ export default {
       const language = this.language;
       try {
         const response = await fetch(
-          `./api/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
+          `${this.api_url}/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
           {
             method: "GET",
-            credentials: 'include'
           },
         );
         const datas = await response.json();

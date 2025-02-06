@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       news: [],
+      api_url: import.meta.env.VITE_API_URL,
       language: "en",
       category: 'top'
     };
@@ -47,11 +48,9 @@ export default {
         const language = this.language;
         const category = this.category;
         const response = await fetch(
-          `./api/get-news.php?languages=${language}&categories=${category}`,
+          `${this.api_url}/get-news.php?languages=${language}&categories=${category}`,
           {
             method: 'GET',
-            credentials: 'include'
-
           }
         );
         const datas = await response.json();
