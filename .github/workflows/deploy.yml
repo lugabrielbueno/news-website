@@ -14,7 +14,7 @@ jobs:
       - name: Npm Install & npm build
         run: |
           cd vue-frontend
-          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env.production
           npm install
           npm run build
 
