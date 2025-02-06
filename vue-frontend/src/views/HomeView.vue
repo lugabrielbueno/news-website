@@ -117,7 +117,6 @@ export default {
       const category = this.$route.name;
       const keywords = this.$route.query.q;
       const language = this.language;
-      console.log(this.api_url)
       try {
         const response = await fetch(
           `${this.api_url}/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
