@@ -140,7 +140,6 @@ export default {
       } finally {
         document.getElementById('loading').style.display = "none";
       }
-
     },
   },
   watch: {
