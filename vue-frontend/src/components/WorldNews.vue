@@ -81,7 +81,6 @@ section {
   margin-top: 50px;
 }
 
-
 p.data_info_title:hover {
   text-decoration: underline;
 }
