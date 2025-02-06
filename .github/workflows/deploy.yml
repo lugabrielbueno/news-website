@@ -13,8 +13,8 @@ jobs:
         uses: actions/setup-node@v2.1.2
       - name: Npm Install & npm build
         run: |
-          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
           cd vue-frontend
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
           npm install
           npm run build
 
