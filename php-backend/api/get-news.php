@@ -13,7 +13,6 @@ header("Content-Type: application/json");
 //  header("Access-Control-Allow-Origin: http://localhost:5173");
 //}
 
-
 $headers = array(
   "Content-Type: application/json",
   "Authorization: {$apiKey}",
