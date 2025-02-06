@@ -46,4 +46,4 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.TARGET_DIR }}
-          EXCLUDE: "/vue-frontend/src/, /.git/, /vue-frontend/node_modules/, **.env, /php-backend/.env"
+          EXCLUDE: "**.env"
