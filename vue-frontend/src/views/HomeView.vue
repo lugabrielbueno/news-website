@@ -126,8 +126,7 @@ export default {
 
           },
         );
-        const datas = await response.text();
-        console.log(datas)
+        const datas = await response.json();
         if (datas) {
           if (datas.status == 'error') {
             throw new Error(datas.message)
