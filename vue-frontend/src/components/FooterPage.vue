@@ -38,7 +38,7 @@ export default {
   methods: {
     receberForm() {
       sessionStorage.setItem("subscribed", true);
-      this.$router.push({ path: '/' })
+      location.reload()
     },
   },
 };
