@@ -4,12 +4,14 @@ session_start();
 
 require __DIR__ . '/../functions.php';
 
+header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: https://news.bitsbylucas.com");
+
+
 loadEnv(__DIR__ . '/../.env');
 
 $apiKey = getenv('API_KEY');
 
-header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: https://news.bitsbylucas.com");
 
 $headers = array(
   "Content-Type: application/json",
