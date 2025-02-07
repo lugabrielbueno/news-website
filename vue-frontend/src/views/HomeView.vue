@@ -122,7 +122,9 @@ export default {
           `${this.api_url}/get-news.php?languages=${language}&keywords=${keywords}&categories=${category}`,
           {
             method: "GET",
-            credentials: 'include'
+            credentials: "include",
+            mode: "cors"
+
           },
         );
         const datas = await response.json();

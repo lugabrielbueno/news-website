@@ -4,8 +4,9 @@ session_start();
 
 require __DIR__ . '/../functions.php';
 
-header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: https://news.bitsbylucas.com");
+header("Access-Control-Allow-Credentials: true");
+header("Content-Type: application/json");
 
 
 loadEnv(__DIR__ . '/../.env');
