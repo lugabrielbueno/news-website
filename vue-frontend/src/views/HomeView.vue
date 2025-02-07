@@ -114,6 +114,8 @@ export default {
     async searchNews() {
 
       document.getElementById('loading').style.display = "flex";
+      const myHeaders = new Headers()
+      myHeaders.append("Access-Control-Allow-Origin","https://news.bitsbylucas.com")
       const category = this.$route.name;
       const keywords = this.$route.query.q;
       const language = this.language;
@@ -123,7 +125,7 @@ export default {
           {
             method: "GET",
             credentials: "include",
-            mode: "cors"
+            headers: myHeaders
 
           },
         );
