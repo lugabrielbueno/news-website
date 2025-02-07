@@ -70,6 +70,15 @@ export default {
       setTimeout(done, 500);
     },
   },
+  watch: {
+    $route: {
+      immediate: false,
+      resetVars() {
+        this.alertaInscrito = false;
+        this.alertaNoData = false;
+      }
+    }
+  },
   components: {
     NavBar,
     FooterPage,
