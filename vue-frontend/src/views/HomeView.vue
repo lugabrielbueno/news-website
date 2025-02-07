@@ -115,7 +115,7 @@ export default {
 
       document.getElementById('loading').style.display = "flex";
       const category = this.$route.name;
-      const keywords = this.$route.query.q;
+      const keywords = this.$route.query.q ? this.$route.query.q : '';
       const language = this.language;
       try {
         const response = await fetch(
