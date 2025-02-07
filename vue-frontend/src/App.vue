@@ -71,12 +71,9 @@ export default {
     },
   },
   watch: {
-    $route: {
-      immediate: false,
-      resetVars() {
-        this.alertaInscrito = false;
-        this.alertaNoData = false;
-      }
+    $route() {
+      this.alertaInscrito = false;
+      this.alertaNoData = false;
     }
   },
   components: {
