@@ -38,7 +38,7 @@ export default {
   methods: {
     receberForm() {
       sessionStorage.setItem("subscribed", true);
-      location.reload()
+      location.href = location.href
     },
   },
 };
