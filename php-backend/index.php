@@ -2,6 +2,5 @@
 
 session_start();
 
-
 ?>
 
