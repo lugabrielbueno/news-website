@@ -39,14 +39,14 @@
               {{ noticia_lista.title }}</a>
           </li>
         </ul>
+        <hr class='hr-extra'>
         <div class='conteudo-extra'>
-          <hr>
           <h4 class='unique'>{{ new_unique.title }}</h4>
           <img class='img_extra' :src='new_unique.image_url' width='300'>
           <article>
             <p>
               <span class='subtitle'>
-                Fonte: {{ new_unique.source_id }} <br>
+                Fonte: {{ new_unique.source_name }} <br>
                 {{ formatDate(new_unique.pubDate) }}
               </span><br>
               {{ new_unique.description }}
@@ -172,8 +172,12 @@ section {
 
 }
 
+.hr-extra {
+  margin-top: 60px;
+}
+
 .conteudo-extra {
-  margin-top: 70px;
+  margin-top: 20px;
   width: 95%;
   margin-left: 20px;
 }
