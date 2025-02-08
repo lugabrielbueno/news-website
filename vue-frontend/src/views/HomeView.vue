@@ -38,11 +38,11 @@
             <a class="link_url" :href="noticia_lista.link">
               {{ noticia_lista.title }}</a>
           </li>
+          <hr class='hr-extra'>
         </ul>
-        <hr class='hr-extra'>
         <div class='conteudo-extra'>
           <h4 class='unique'>{{ new_unique.title }}</h4>
-          <img class='img_extra' :src='new_unique.image_url' width='300'>
+          <img class='img_extra' :src='new_unique.image_url' width='400'>
           <article>
             <p>
               <span class='subtitle'>
@@ -173,11 +173,11 @@ section {
 }
 
 .hr-extra {
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .conteudo-extra {
-  margin-top: 20px;
+  margin-top: 50px;
   width: 95%;
   margin-left: 20px;
 }
@@ -217,7 +217,6 @@ h4.unique {
   padding-left: 10px;
   border-left: 5px solid rgba(0, 0, 0, 0.8);
   color: rgba(0, 0, 0, 0.8);
-  height: 20px;
   display: flex;
   align-items: center;
   align-self: center;
