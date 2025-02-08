@@ -185,6 +185,28 @@ h1 {
   padding: 4px 80px;
 }
 
+@media (max-width:1024px) {
+  .live_iframe {
+    width: 0;
+    height: 0;
+    display: none;
+
+  }
+
+  header.header {
+    padding: 0;
+    height: 100px;
+  }
+
+  .divider {
+    padding: 0;
+    margin-top: 120px;
+    display: block;
+    text-align: center;
+  }
+
+}
+
 @media (max-width:768px) {
   .world_news {
     display: none;

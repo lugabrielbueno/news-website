@@ -42,7 +42,7 @@
         </ul>
         <div class='conteudo-extra'>
           <h4 class='unique'>{{ new_unique.title }}</h4>
-          <img class='img_extra' :src='new_unique.image_url' width='400'>
+          <img class='img_extra' :src='new_unique.image_url'>
           <article>
             <p>
               <span class='subtitle'>
@@ -197,6 +197,7 @@ section {
 
 .img_extra {
   border-radius: 5px;
+  width: 400px;
 }
 
 h4.destaques {
@@ -404,6 +405,42 @@ section .container-geral i.mdi {
   font-size: 20px;
 }
 
+@media (max-width: 1024px) {
+  section {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container-geral {
+    width: 100%;
+    height:auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  #carouselExampleCaptions .slide_image {
+    width: 100%;
+    height: auto;
+  }
+
+  .container-geral .left-news {
+    margin: 5px;
+    padding: 0;
+    float:left;
+    width:55%;
+  }
+
+  .container-geral .right-news {
+    width:40%;
+    padding: 0;
+    margin: 0;
+    float:left;
+  }
+
+}
 
 @media (max-width:768px) {
   section {
@@ -508,6 +545,10 @@ section .container-geral i.mdi {
     display: block;
     padding: 0;
     margin: 20px 10px;
+  }
+
+  .img_extra {
+    width: 300px;
   }
 }
 </style>

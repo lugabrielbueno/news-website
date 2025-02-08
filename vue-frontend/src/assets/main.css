@@ -7,20 +7,15 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding: 0px;
+  background-color: rgba(100, 100, 100, 0.1);
+  color: #333;
+  background-image:
+    radial-gradient(rgba(0, 0, 0, 0.02) 10%, transparent 10%),
+    radial-gradient(rgba(0, 0, 0, 0.04) 15%, transparent 15%);
+  background-size: 4px 4px, 8px 8px;
 }
 
-@media (min-width: 1024px) {
-  body {
-    width: 100%;
-  }
-
-  #app {
-    padding: 0px;
-    background-color: rgba(100, 100, 100, 0.1);
-    color: #333;
-    background-image:
-      radial-gradient(rgba(0, 0, 0, 0.02) 10%, transparent 10%),
-      radial-gradient(rgba(0, 0, 0, 0.04) 15%, transparent 15%);
-    background-size: 4px 4px, 8px 8px;
-  }
+body {
+  width: 100%;
 }
