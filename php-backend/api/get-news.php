@@ -4,7 +4,7 @@ session_start();
 
 require __DIR__ . '/../functions.php';
 
-header("Access-Control-Allow-Origin: http://news.bitsbylucas.com");
+header("Access-Control-Allow-Origin: https://news.bitsbylucas.com");
 header("Access-Control-Allow-Credentials: true");
 header("Content-Type: application/json");
 
