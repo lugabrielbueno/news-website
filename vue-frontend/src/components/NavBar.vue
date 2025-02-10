@@ -1,5 +1,5 @@
 <template>
-  <div class='container'>
+  <div class='container' id='container_nav'>
     <a class="menu" @click="openMenu"><i class="mdi mdi-menu"></i></a>
     <a class="menu" @click="openMenu"><i class="mdi mdi-magnify"></i></a>
     <a class="navbar-brand" href="#"><span>news</span><i class="mdi mdi-newspaper"></i></a>
@@ -66,6 +66,9 @@ export default {
     openMenu() {
       this.displayMenu = !this.displayMenu
     },
+    closeMenu() {
+      this.displayMenu = false
+    },
     redir() {
       const querySearch = document.getElementById('pesquisa_noticia').value
 
@@ -82,10 +85,17 @@ export default {
       } catch (error) {
         console.error(error)
       }
-
-
     },
   },
+  mounted() {
+    document.addEventListener('click',  (e) => {
+      let navbar = document.getElementById('container_nav')
+      if (!navbar.contains(e.target)) {
+        console.log('oi')
+        this.closeMenu()
+      }
+    })
+  }
 };
 </script>
 
@@ -208,7 +218,7 @@ input.form-control:focus {
 
   .navbar-brand {
     background-color: transparent;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     align-self: center;
     flex-direction: row;
@@ -219,7 +229,7 @@ input.form-control:focus {
   }
 
   .navbar-brand span {
-    display: inline-flex;
+    display: flex;
     font-weight: bold;
   }
 
@@ -243,13 +253,14 @@ input.form-control:focus {
   }
 
 
+
   div.container nav.navbar.show {
     display: flex;
     align-items: flex-start;
     align-self: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-    width: auto;
+    width: 100%;
     height: auto;
     text-align: left;
     position: absolute;
@@ -260,9 +271,18 @@ input.form-control:focus {
     border-bottom: 5px solid black;
   }
 
+  .navbar .items-navigation {
+    width: 100%;
+  }
+
+  .navbar .items-navigation ul.navbar-nav li.nav-item {
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+    width: 100%;
+  }
+
 
   .navbar ul.navbar-nav li.nav-item .nav-link {
-    font-size: 35px;
+    font-size: 60px;
     text-decoration: underline;
   }
 
@@ -270,6 +290,12 @@ input.form-control:focus {
     font-size: 20px;
     margin: 0;
     height: 55px;
+  }
+
+  div.container nav.navbar ul.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
 
@@ -288,17 +314,17 @@ input.form-control:focus {
 
   .navbar-brand i.mdi {
     font-size: 30px;
-    padding: 2px 25px;
+    padding: 2px 10px;
   }
 
-  .navbar-brand {
+  .container a.navbar-brand {
     background-color: transparent;
     display: inline-flex;
     align-items: center;
     align-self: center;
     flex-direction: row;
     font-size: 24px;
-    margin-left: 100px;
+    margin-left: 70px;
     font-family: "Roboto Condensed";
     margin-top: 0px;
   }
@@ -361,7 +387,7 @@ input.form-control:focus {
 
   input.form-control {
     height: 40px;
-    width: 120%;
+    width: 100%;
   }
 
   .container {
@@ -371,6 +397,11 @@ input.form-control:focus {
     display: flex;
     z-index: 100;
     border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .navbar .btn-sm.search i {
+    color: white;
+    font-size: 23px;
   }
 }
 </style>
