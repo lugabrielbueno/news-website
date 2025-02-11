@@ -30,8 +30,6 @@ Tecnologias:
 
 ## Como utilizar
 1. Você vai precisar de uma API KEY gerada no site da [API](https://newsdata.io/) pode ser gerada gratuitamente
-```
-```
 
 2. Configure o arquivo php-backend/.env
 ```
@@ -44,8 +42,6 @@ API_URL=http://localhost:8000
 ```
 
 4. No arquivo get-news.php você vai precisar colocar a mesma url acima (http://localhost:8000)
-```
-```
 
 
 5. Instale PHP 
@@ -75,6 +71,4 @@ $ npm run dev
 
 8. O projeto já deve estar rodando na porta onde VueJS exibiu para você! 🚀🚀🚀
 - http://localhost:5173/
-
-```
 
