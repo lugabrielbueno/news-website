@@ -175,6 +175,22 @@ p.data_info {
   border-radius: 5px;
 }
 
+@media(max-width:1024px) {
+  section {
+    display: block;
+    padding:0;
+    margin-top:20px;
+    width: 100%;
+  }
+
+  section .right-news {
+    display: block;
+    padding:0;
+    margin:0;
+    width: 100%;
+  }
+}
+
 @media (max-width:768px) {
   section {
     display: block;

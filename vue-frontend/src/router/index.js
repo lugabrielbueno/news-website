@@ -53,10 +53,6 @@ const router = createRouter({
       name: "search",
       component: HomeView,
     },
-    {
-      path: "/:catchAll(.*)",
-      component: HomeView
-    }, // Catch all routes
 
   ],
 });

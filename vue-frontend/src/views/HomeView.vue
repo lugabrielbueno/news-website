@@ -38,27 +38,20 @@
             <a class="link_url" :href="noticia_lista.link">
               {{ noticia_lista.title }}</a>
           </li>
+          <hr class='hr-extra'>
         </ul>
         <div class='conteudo-extra'>
-          <hr>
-          <h4 class='ciberseguranca'>Cibersegurança</h4>
-          <img class='img_extra'
-            src='https://www.psafe.com/blog/wp-content/uploads/2021/10/aviso-de-perigo-seguranca-digital-1.jpg'
-            width='300'>
-          <h5 class='title-extra'>O que é segurança digital? Entenda</h5>
+          <h4 class='unique'>{{ new_unique.title }}</h4>
+          <img class='img_extra' :src='new_unique.image_url'>
           <article>
             <p>
-              <span class='subtitle'>Descubra a importância da segurança digital pessoal como empresarial, quais são as
-                principais ameaças e as
-                melhores dicas de como se proteger.
+              <span class='subtitle'>
+                Fonte: {{ new_unique.source_name }} <br>
+                {{ formatDate(new_unique.pubDate) }}
               </span><br>
-              Segurança digital é o nome para a prática de proteger dispositivos pessoais ou de armazenamento, sistemas,
-              redes, servidores, programas e Internet das Coisas (IoT) contra ataques cibernéticos. Nos dias de hoje
-              quase tudo pode ser feito virtualmente, por exemplo, ir pessoalmente a bancos e supermercados já não é
-              mais necessário, é possível fazer tudo isso através da internet.
+              {{ new_unique.description }}
             </p>
-            <a href='https://www.psafe.com/blog/o-que-e-seguranca-digital/' target='_blank' class='btn  leia_mais'><i
-                class='mdi mdi-plus'></i>Leia
+            <a :href='new_unique.link' target='_blank' class='btn  leia_mais'><i class='mdi mdi-plus'></i>Leia
               mais</a>
           </article>
 
@@ -95,6 +88,7 @@ export default {
       news: [],
       api_url: import.meta.env.VITE_API_URL,
       news_left: [],
+      new_unique: '',
       category: "top",
       language: "pt",
       news_slide: [],
@@ -135,6 +129,8 @@ export default {
           this.news_slide = noticias.slice(0, 3);
           this.news = noticias.slice(3, 14);
           this.news_left = noticias.slice(14, 18);
+          this.new_unique = noticias.slice(18, 19)[0];
+
         }
 
       } catch (error) {
@@ -176,8 +172,12 @@ section {
 
 }
 
+.hr-extra {
+  margin-top: 30px;
+}
+
 .conteudo-extra {
-  margin-top: 70px;
+  margin-top: 50px;
   width: 95%;
   margin-left: 20px;
 }
@@ -197,6 +197,7 @@ section {
 
 .img_extra {
   border-radius: 5px;
+  width: 400px;
 }
 
 h4.destaques {
@@ -211,13 +212,12 @@ h4.destaques {
   align-self: center;
 }
 
-h4.ciberseguranca {
+h4.unique {
   font-size: 28px;
   margin-left: 5px;
   padding-left: 10px;
   border-left: 5px solid rgba(0, 0, 0, 0.8);
   color: rgba(0, 0, 0, 0.8);
-  height: 20px;
   display: flex;
   align-items: center;
   align-self: center;
@@ -405,6 +405,42 @@ section .container-geral i.mdi {
   font-size: 20px;
 }
 
+@media (max-width: 1024px) {
+  section {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container-geral {
+    width: 100%;
+    height:auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  #carouselExampleCaptions .slide_image {
+    width: 100%;
+    height: auto;
+  }
+
+  .container-geral .left-news {
+    margin: 5px;
+    padding: 0;
+    float:left;
+    width:55%;
+  }
+
+  .container-geral .right-news {
+    width:40%;
+    padding: 0;
+    margin: 0;
+    float:left;
+  }
+
+}
 
 @media (max-width:768px) {
   section {
@@ -509,6 +545,10 @@ section .container-geral i.mdi {
     display: block;
     padding: 0;
     margin: 20px 10px;
+  }
+
+  .img_extra {
+    width: 300px;
   }
 }
 </style>
