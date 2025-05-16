@@ -28,8 +28,8 @@ Tecnologias:
 
 
 ## Screenshot
+![image](https://github.com/user-attachments/assets/c82752a8-ef53-4b8f-9a45-2e94af1bebce)
 
-![image](https://github.com/user-attachments/assets/d1e6bd5d-39e1-4ec3-81ce-7d1bd4e2456d)
 
 
 
