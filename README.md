@@ -27,6 +27,12 @@ Tecnologias:
 - AWS Route 53
 
 
+## Screenshot
+
+![image](https://github.com/user-attachments/assets/d1e6bd5d-39e1-4ec3-81ce-7d1bd4e2456d)
+
+
+
 
 ## Como utilizar
 1. Você vai precisar de uma API KEY gerada no site da [API](https://newsdata.io/) pode ser gerada gratuitamente
